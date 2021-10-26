@@ -10,8 +10,8 @@ import { Fuego } from "../firebase/fuego";
 const fuego = new Fuego(firebaseConfig);
 import { getRemoteConfig, getValue } from "firebase/remote-config";
 
-// FIXME: 
-export async function getStaticProps(context) {
+
+export async function getStaticProps() {
   const remoteConfig = getRemoteConfig();
   const appTitleVal = getValue(remoteConfig, "app_title");
   return {
