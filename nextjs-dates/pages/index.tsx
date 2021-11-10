@@ -1,9 +1,34 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { useState } from "react";
+
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+
+import {
+  DateRangePicker,
+  SingleDatePicker,
+  DayPickerRangeController,
+  FocusedInputShape,
+} from "react-dates";
+
+import "react-dates/lib/css/_datepicker.css";
+import "react-dates/initialize";
+import moment, { Moment } from "moment";
+
+interface DatesRange {
+  startDate: Moment | null;
+  endDate: Moment | null;
+}
 
 const Home: NextPage = () => {
+  const [focusedInput, setFocusedInput] = useState<FocusedInputShape | null>(
+    null
+  );
+  const [datesRange, setDatesRange] = useState<DatesRange>({
+    startDate: moment(),
+    endDate: null,
+  });
   return (
     <div className={styles.container}>
       <Head>
@@ -17,10 +42,24 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <span className={styles.description}>
+          <DateRangePicker
+          orientation="vertical"
+            startDate={datesRange.startDate} // momentPropTypes.momentObj or null,
+            startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+            endDate={datesRange.endDate} // momentPropTypes.momentObj or null,
+            endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+            onDatesChange={({ startDate, endDate }: DatesRange) =>
+              setDatesRange({ startDate, endDate })
+            } // PropTypes.func.isRequired,
+            focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+            onFocusChange={(focusedInput) => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+            // block
+          />
+
+          {/* Get started by editing{' '}
+          <code className={styles.code}>pages/index.tsx</code> */}
+        </span>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -59,14 +98,14 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

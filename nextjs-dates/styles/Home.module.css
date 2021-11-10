@@ -114,3 +114,33 @@
     flex-direction: column;
   }
 }
+
+
+
+
+
+
+.CalendarDay__selected_span {
+  background: #82e0aa; 
+  color: white; 
+  border: 1px solid orange; 
+}
+
+
+.CalendarDay__selected {
+  background: blue;
+  color: white;
+}
+
+
+.CalendarDay__selected:hover {
+  background: orange;
+  color: white;
+}
+
+
+
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+  background: brown;
+}
