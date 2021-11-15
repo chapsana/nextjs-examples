@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import { NextPage } from 'next'
 
 export default function About() {
   return (
