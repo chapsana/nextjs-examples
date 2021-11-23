@@ -10,17 +10,17 @@
   "dependencies": {
     "date-fns": "^2.25.0",
     "moment": "^2.29.1",
-    "next": "12.0.3",
+    "next": "12.0.4",
     "react": "17.0.2",
     "react-dates": "^21.8.0",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/node": "16.11.7",
-    "@types/react": "17.0.34",
+    "@types/node": "16.11.10",
+    "@types/react": "17.0.36",
     "@types/react-dates": "^21.8.3",
     "eslint": "8",
-    "eslint-config-next": "12.0.3",
-    "typescript": "4.4.4"
+    "eslint-config-next": "12.0.4",
+    "typescript": "4.5.2"
   }
 }
